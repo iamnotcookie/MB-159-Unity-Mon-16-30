@@ -1,18 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GameController : MonoBehaviour {
+public class GameController : MonoBehaviour
+{
 
-	public int score = 0;
+	[SerializeField]
+	private int score = 0;
 
 	// Use this for initialization
-	void Start () {
+	private void Start ()
+	{
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	private void Update ()
+	{
 		
+	}
+
+	public void addScore ()
+	{
+		score++;
 	}
 }

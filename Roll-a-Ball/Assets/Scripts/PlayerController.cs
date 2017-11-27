@@ -2,12 +2,11 @@
 
 public class PlayerController : MonoBehaviour
 {
-	
-	public GameObject gameController;
 
 	[SerializeField]
 	private float pushForce = 3000;
 
+	private GameObject gameController;
     private Rigidbody rb;
     private float moveHorizontal;
 	private float moveVertical;
@@ -18,6 +17,7 @@ public class PlayerController : MonoBehaviour
 	{
 
         rb = GetComponent<Rigidbody>();
+		gameController = GameObject.FindWithTag ("GameController");
 
     }
 	
@@ -32,10 +32,9 @@ public class PlayerController : MonoBehaviour
 		rb.AddForce (movement * pushForce * Time.deltaTime);
 	}
 
-	void OnTriggerEnter(Collider other)
+	private void OnTriggerEnter(Collider other)
 	{
 		Destroy(other.gameObject);
-		gameController.GetComponent<GameController>().score
-		= gameController.GetComponent<GameController>().score + 1;
+		gameController.GetComponent<GameController> ().addScore ();
 	}
 }
