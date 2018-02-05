@@ -23,10 +23,11 @@ public class player_controller : MonoBehaviour {
 		move_horizontal = Input.GetAxisRaw ("Horizontal");
 		move_vertical = Input.GetAxisRaw ("Vertical");
 		movement = new Vector3 (move_horizontal, 0f, move_vertical);
-		rb.AddForce(movement * pushforce * Time.deltaTime);
+		rb.AddForce(movement * pushforce);
     }
 	void OnTriggerEnter(Collider other) {
 		Destroy(other.gameObject);
-		gameController.GetComponent<game_controller>().addScore ();
+		gameController.GetComponent<score_controller>().addScore ();
+		score_controller.instance.addScore ();
 	}
 }
